@@ -1,17 +1,12 @@
 import requests
 from django.shortcuts import render
+from django.http import JsonResponse
 
-def home(request):
-  # USING APIS => Example 1
-  response = requests.get('https://api.github.com/events')
-  data = response.json()
-  result = data[0]["repo"]
+def get_data(request):
+  response = requests.get('https://source.unsplash.com/random')
 
-  # Example 2
-  reponse2 = requests.get('https://dog.ceo/api/breeds/image/random')
-  data2 = reponse2.json()
-  result2 = data2["message"]
-
-
-  
-  return render(request, 'templates/index.html', {'result': result, 'result2': result2})
+  if response.status_code == 200:
+        image_url = response.url
+  else:
+        image_url = None
+  return render(request, 'django_project/index.html', {'image_url': image_url})

@@ -10,13 +10,23 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>Hello, My name is Evans </h1>
+  <header>
+    <h1>Hello and Welcome to this Unique Application!</h1>
+</header>
+<main>
+    <div id="image-container">
+        {% if image_url %}
+            <img src="{{ image_url }}" alt="Random Image">
+        {% else %}
+            <p>Failed to load image.</p>
+        {% endif %}
+    </div>
+</main>
+<footer>
+    <p>Designed by Subira</p>
+</footer>
 
-  {{result}}
-
-  <h1>Random Pet</h1>
-{{result2}}
-  <img src={{result2}} alt="random pet" />
-  
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'django_project/script.js' %}"></script>
 </body>
 </html>
